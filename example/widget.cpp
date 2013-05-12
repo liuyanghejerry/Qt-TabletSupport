@@ -18,6 +18,7 @@ Widget::Widget(QWidget *parent) :
 Widget::~Widget()
 {
     delete tabletSupport_;
+    delete pic;
 }
 
 void Widget::paintEvent(QPaintEvent *)
