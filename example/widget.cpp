@@ -32,7 +32,8 @@ void Widget::tabletEvent(QTabletEvent *ev)
     QPainter painter(pic);
     painter.setRenderHint(QPainter::Antialiasing);
     QPen pen;
-    pen.setWidth(5);
+    int maxWidth = 5;
+    pen.setWidth(maxWidth);
     pen.setCapStyle(Qt::RoundCap);
     pen.setJoinStyle(Qt::RoundJoin);
     pen.setColor(Qt::blue);
@@ -42,11 +43,15 @@ void Widget::tabletEvent(QTabletEvent *ev)
         if(!drawing){
             lastPoint = ev->pos();
             drawing = true;
+            pen.setWidthF(maxWidth * ev->pressure());
+            painter.setPen(pen);
             painter.drawPoint(ev->pos());
         }
         break;
     case QEvent::TabletMove:
         if(drawing && lastPoint != ev->pos()){
+            pen.setWidthF(maxWidth * ev->pressure());
+            painter.setPen(pen);
             painter.drawLine(lastPoint, ev->pos());
             lastPoint = ev->pos();
         }
