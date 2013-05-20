@@ -15,6 +15,7 @@ class Widget : public QWidget
 public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
+    QSize sizeHint() const;
 protected:
     void paintEvent(QPaintEvent *ev);
     void tabletEvent(QTabletEvent *ev);

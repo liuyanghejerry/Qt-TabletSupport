@@ -21,9 +21,15 @@ Widget::~Widget()
     delete pic;
 }
 
+QSize Widget::sizeHint() const
+{
+    return QSize(720,480);
+}
+
 void Widget::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
+    painter.drawLine(0,0,100,100);
     painter.drawPixmap(0,0,*pic);
 }
 
