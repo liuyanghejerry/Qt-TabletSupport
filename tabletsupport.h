@@ -21,7 +21,7 @@ public:
     const WinTabAPI& callFunc() const;
 protected:
     virtual bool nativeEventFilter(const QByteArray &eventType,
-                                   void *message, long *) override;
+                                   void *message, long *);
 private:
     bool loadWintab();
     bool freeWintab();
